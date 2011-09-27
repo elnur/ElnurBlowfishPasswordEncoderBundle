@@ -9,7 +9,13 @@ class BlowfishPasswordEncoder implements PasswordEncoderInterface
 
     public function __construct($cost = 15)
     {
-        $this->cost = $cost;
+        $cost = (int) $cost;
+
+        if ($cost < 4 || $cost > 31) {
+            throw new \InvalidArgumentException('$cost must be in the range of 4-31');
+        }
+
+        $this->cost = sprintf("%02d", $cost);
     }
 
     public function encodePassword($raw, $salt)
