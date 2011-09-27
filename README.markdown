@@ -1,5 +1,5 @@
-ElnurBlowfishPasswordEncoder
-============================
+ElnurBlowfishPasswordEncoderBundle
+==================================
 
 This bundle provides a password encoder based on the Blowfish algorithm for
 Symfony 2. You can find out why this algorithm should be used to encode
