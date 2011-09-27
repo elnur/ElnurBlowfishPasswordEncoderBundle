@@ -45,10 +45,10 @@ but you can change it to a different value in the range `04-31` by adding an
 argument:
 
     services:
-            # ...
-            blowfish.password.encoder:
-                class: Elnur\BlowfishPasswordEncoderBundle\Security\Encoder\BlowfishPasswordEncoder
-                arguments: { cost: 10 }
+        # ...
+        blowfish.password.encoder:
+            class: Elnur\BlowfishPasswordEncoderBundle\Security\Encoder\BlowfishPasswordEncoder
+            arguments: { cost: 10 }
 
 The higher you set the factor, the longer it will take to encode a password.
 
