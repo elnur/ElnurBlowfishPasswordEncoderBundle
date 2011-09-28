@@ -27,4 +27,29 @@ class BlowfishPasswordEncoderTest extends \PHPUnit_Framework_TestCase
             new BlowfishPasswordEncoder($cost);
         }
     }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testShortSalt()
+    {
+        $encoder = new BlowfishPasswordEncoder(4);
+        $encoder->encodePassword('password', 'abcdefg');
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testBadSalt()
+    {
+        $encoder = new BlowfishPasswordEncoder(4);
+        $encoder->encodePassword('password', 'abcdefghi,klmnopqrstuv');
+    }
+
+    public function testResultLength()
+    {
+        $encoder = new BlowfishPasswordEncoder(4);
+        $result = $encoder->encodePassword('password', 'abcdefghijklmnopqrstuv');
+        $this->assertEquals(60, strlen($result));
+    }
 }

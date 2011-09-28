@@ -12,7 +12,7 @@ class BlowfishPasswordEncoder implements PasswordEncoderInterface
         $cost = (int) $cost;
 
         if ($cost < 4 || $cost > 31) {
-            throw new \InvalidArgumentException('$cost must be in the range of 4-31');
+            throw new \InvalidArgumentException('Cost must be in the range of 4-31');
         }
 
         $this->cost = sprintf("%02d", $cost);
@@ -20,6 +20,14 @@ class BlowfishPasswordEncoder implements PasswordEncoderInterface
 
     public function encodePassword($raw, $salt)
     {
+        if (strlen($salt) < 22) {
+            throw new \InvalidArgumentException('Salt must be at least 22 characters long');
+        }
+
+        if (!preg_match('|^[/\.0-9A-Za-z]+$|', $salt)) {
+            throw new \InvalidArgumentException('Salt must consist of characters in the range of /.0-9A-Za-z');
+        }
+
         return crypt($raw, '$2a$' . $this->cost . '$'. $salt . '$');
     }
 
