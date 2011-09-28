@@ -7,7 +7,7 @@ class BlowfishPasswordEncoder implements PasswordEncoderInterface
 {
     private $cost;
 
-    public function __construct($cost = 15)
+    public function __construct($cost)
     {
         $cost = (int) $cost;
 

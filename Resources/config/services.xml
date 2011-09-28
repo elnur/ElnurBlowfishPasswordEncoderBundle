@@ -6,9 +6,12 @@
 
     <parameters>
         <parameter key="security.encoder.blowfish.class">Elnur\BlowfishPasswordEncoderBundle\Security\Encoder\BlowfishPasswordEncoder</parameter>
+        <parameter key="security.encoder.blowfish.cost" />
     </parameters>
 
     <services>
-        <service id="security.encoder.blowfish" class="%security.encoder.blowfish.class%" />
+        <service id="security.encoder.blowfish" class="%security.encoder.blowfish.class%">
+            <argument>%security.encoder.blowfish.cost%</argument>
+        </service>
     </services>
 </container>
