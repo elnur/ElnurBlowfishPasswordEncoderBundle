@@ -52,6 +52,13 @@ the `config.yml` file:
 
 Each increment of the cost *doubles* the time it takes to encode a password.
 
+Usage
+-----
+
+In order for this bundle to work, your user class has to return a salt of at
+least `22` characters in length and consist of the characters in the range of
+`./0-9A-Za-z`. These are the Blowfish algorithm requirements.
+
 License
 -------
 
