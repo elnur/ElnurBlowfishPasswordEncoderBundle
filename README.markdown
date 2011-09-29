@@ -16,11 +16,11 @@ Installation
 
     And run `bin/vendors install`.
 
-2.  Register the namespace in the `app/autoload.php` file:
+2.  Register the `Elnur` namespace in the `app/autoload.php` file:
 
         $loader->registerNamespaces(array(
             // ...
-            'Elnur\\BlowfishPasswordEncoderBundle' => __DIR__.'/../vendor/bundles',
+            'Elnur' => __DIR__.'/../vendor/bundles',
         ));
 
 3.  Register the bundle in the `app/AppKernel.php` file:
