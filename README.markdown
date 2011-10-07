@@ -1,9 +1,9 @@
 ElnurBlowfishPasswordEncoderBundle
 ==================================
 
-This bundle provides a Blowfish based password encoder for Symfony 2.
-You can find out why this algorithm should be preferred over hashing
-[here](http://yorickpeterse.com/articles/use-bcrypt-fool).
+Still using `MD5` or `SHA` family hashing algorithms for password “encryption”?
+If you are, read [this post](http://yorickpeterse.com/articles/use-bcrypt-fool)
+and then come back to get yourself a copy of this bundle.
 
 Installation
 ------------
