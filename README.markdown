@@ -20,7 +20,7 @@ Installation
 
         $loader->registerNamespaces(array(
             // ...
-            'Elnur' => __DIR__.'/../vendor/bundles',
+            'Elnur'            => __DIR__.'/../vendor/bundles',
         ));
 
 3.  Register the bundle in the `app/AppKernel.php` file:
@@ -29,7 +29,7 @@ Installation
         {
             $bundles = array(
                 // ...
-                new Elnur\BlowfishPasswordEncoderBundle\ElnurBlowfishPasswordEncoderBundle()
+                new Elnur\BlowfishPasswordEncoderBundle\ElnurBlowfishPasswordEncoderBundle(),
             );
         }
 
