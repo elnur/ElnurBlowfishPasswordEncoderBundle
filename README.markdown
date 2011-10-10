@@ -2,7 +2,8 @@ ElnurBlowfishPasswordEncoderBundle
 ==================================
 
 Still using `MD5` or `SHA` family hashing algorithms for password “encryption”?
-If you are, read [this post](http://yorickpeterse.com/articles/use-bcrypt-fool)
+If you are, read [this](http://codahale.com/how-to-safely-store-a-password) and
+[this](http://yorickpeterse.com/articles/use-bcrypt-fool)
 and then come back to get yourself a copy of this bundle.
 
 Installation
@@ -70,7 +71,7 @@ Acknowledgements
 ----------------
 
 I'm thankful to [asm89](https://github.com/asm89) for enlightening me by giving
-the link you see above and answering my other related questions on the
+the links you see above and answering my other related questions on the
 `#symfony` channel.
 
 And I'm thankful to [dustin10](https://github.com/dustin10) for suggesting
