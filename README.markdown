@@ -53,12 +53,20 @@ the `config.yml` file:
 
 Each increment of the cost *doubles* the time it takes to encode a password.
 
+You can change the cost factor at *any time* — even if you already have some
+passwords encoded using a different cost factor. New passwords will be encoded
+using the new cost factor, while the already encoded ones will be validated
+using a cost factor that was used back when they were encoded.
+
 Usage
 -----
 
-In order for this bundle to work, your user class has to return a salt of at
-least `22` characters in length and consist of the characters in the range of
-`./0-9A-Za-z`. These are the Blowfish algorithm requirements.
+A salt for each new password is generated automatically and need not be
+persisted. Since an encoded password contains the salt used to encode it,
+persisting the encoded password alone is enough.
+
+All the encoded passwords are `60` characters long, so make sure to allocate
+enough space for them to be persisted.
 
 License
 -------
