@@ -39,21 +39,14 @@ class BlowfishPasswordEncoder implements PasswordEncoderInterface
         $this->cost = sprintf("%02d", $cost);
     }
 
-    public function encodePassword($raw, $salt)
+    public function encodePassword($raw, $salt = null)
     {
-        if (strlen($salt) < 22) {
-            throw new \InvalidArgumentException('Salt must be at least 22 characters long');
-        }
-
-        if (!preg_match('|^[/\.0-9A-Za-z]+$|', $salt)) {
-            throw new \InvalidArgumentException('Salt must consist of characters in the range of /.0-9A-Za-z');
-        }
-
+        $salt = substr(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36), 0, 22);
         return crypt($raw, '$2a$' . $this->cost . '$'. $salt . '$');
     }
 
-    public function isPasswordValid($encoded, $raw, $salt)
+    public function isPasswordValid($encoded, $raw, $salt = null)
     {
-        return $encoded == $this->encodePassword($raw, $salt);
+        return $encoded == crypt($raw, $encoded);
     }
 }

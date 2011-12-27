@@ -26,6 +26,8 @@ use Elnur\BlowfishPasswordEncoderBundle\Security\Encoder\BlowfishPasswordEncoder
 
 class BlowfishPasswordEncoderTest extends \PHPUnit_Framework_TestCase
 {
+    const PASSWORD = 'password';
+
     /**
      * @expectedException \InvalidArgumentException
      */
@@ -49,28 +51,18 @@ class BlowfishPasswordEncoderTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function testShortSalt()
-    {
-        $encoder = new BlowfishPasswordEncoder(4);
-        $encoder->encodePassword('password', 'abcdefg');
-    }
-
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function testBadSalt()
-    {
-        $encoder = new BlowfishPasswordEncoder(4);
-        $encoder->encodePassword('password', 'abcdefghi,klmnopqrstuv');
-    }
-
     public function testResultLength()
     {
         $encoder = new BlowfishPasswordEncoder(4);
-        $result = $encoder->encodePassword('password', 'abcdefghijklmnopqrstuv');
+        $result = $encoder->encodePassword(self::PASSWORD);
         $this->assertEquals(60, strlen($result));
+    }
+
+    public function testValidation()
+    {
+        $encoder = new BlowfishPasswordEncoder(4);
+        $result = $encoder->encodePassword(self::PASSWORD);
+        $this->assertTrue($encoder->isPasswordValid($result, self::PASSWORD));
+        $this->assertFalse($encoder->isPasswordValid($result, 'anotherPassword'));
     }
 }
