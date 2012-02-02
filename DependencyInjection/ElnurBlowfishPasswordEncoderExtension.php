@@ -25,8 +25,7 @@ namespace Elnur\BlowfishPasswordEncoderBundle\DependencyInjection;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension,
     Symfony\Component\DependencyInjection\ContainerBuilder,
     Symfony\Component\DependencyInjection\Loader\XmlFileLoader,
-    Symfony\Component\Config\FileLocator,
-    Symfony\Component\Config\Definition\Processor;
+    Symfony\Component\Config\FileLocator;
 
 class ElnurBlowfishPasswordEncoderExtension extends Extension
 {
@@ -35,9 +34,8 @@ class ElnurBlowfishPasswordEncoderExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
 
-        $processor = new Processor();
         $configuration = new Configuration();
-        $config = $processor->processConfiguration($configuration, $configs);
+        $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('security.encoder.blowfish.cost', $config['cost']);
     }
