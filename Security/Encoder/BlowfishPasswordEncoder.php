@@ -22,9 +22,9 @@
  */
 namespace Elnur\BlowfishPasswordEncoderBundle\Security\Encoder;
 
-use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
+use Symfony\Component\Security\Core\Encoder\BasePasswordEncoder;
 
-class BlowfishPasswordEncoder implements PasswordEncoderInterface
+class BlowfishPasswordEncoder extends BasePasswordEncoder
 {
     private $cost;
 
@@ -47,6 +47,6 @@ class BlowfishPasswordEncoder implements PasswordEncoderInterface
 
     public function isPasswordValid($encoded, $raw, $salt = null)
     {
-        return $encoded == crypt($raw, $encoded);
+        return $this->comparePasswords($encoded, crypt($raw, $encoded));
     }
 }
