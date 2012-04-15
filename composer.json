@@ -1,0 +1,23 @@
+{
+    "name": "elnur/blowfish-password-encoder-bundle",
+    "type": "symfony-bundle",
+    "description": "Blowfish (bcrypt) based password encoder for Symfony2",
+    "keywords": ["security", "blowfish", "bcrypt", "password-encoder"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Elnur Abdurrakhimov",
+            "email": "elnur@elnur.pro",
+            "homepage": "http://www.elnur.pro"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": ">=2.0,<2.2",
+        "symfony/security-bundle": ">=2.0,<2.2"
+    },
+    "autoload": {
+        "psr-0": { "Elnur\\BlowfishPasswordEncoderBundle": "" }
+    },
+    "target-dir": "Elnur/BlowfishPasswordEncoderBundle"
+}
