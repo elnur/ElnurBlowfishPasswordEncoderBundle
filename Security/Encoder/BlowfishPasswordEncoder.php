@@ -47,6 +47,6 @@ class BlowfishPasswordEncoder extends BasePasswordEncoder
 
     public function isPasswordValid($encoded, $raw, $salt = null)
     {
-        return $this->comparePasswords($encoded, crypt($raw, $encoded));
+        return $this->comparePasswords($encoded, crypt($raw, substr($encoded, 0, 28) . '$'));
     }
 }
