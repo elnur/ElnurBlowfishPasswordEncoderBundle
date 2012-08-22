@@ -22,8 +22,8 @@
  */
 namespace Elnur\BlowfishPasswordEncoderBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\ConfigurationInterface,
-    Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
 class Configuration implements ConfigurationInterface
 {
