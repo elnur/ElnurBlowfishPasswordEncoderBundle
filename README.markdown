@@ -9,22 +9,19 @@ get yourself a copy of this bundle.
 Installation
 ------------
 
-1.  Add this to the `deps` file:
+1.  Add this to the `composer.json`:
 
-        [ElnurBlowfishPasswordEncoderBundle]
-            git=http://github.com/elnur/ElnurBlowfishPasswordEncoderBundle.git
-            target=/bundles/Elnur/BlowfishPasswordEncoderBundle
+        {
+            "require": {
+                "elnur/blowfish-password-encoder-bundle": "dev-master"
+            }
+        }
 
-    And run `bin/vendors install`.
+    And run:
 
-2.  Register the `Elnur` namespace in the `app/autoload.php` file:
+        composer update elnur/blowfish-password-encoder-bundle
 
-        $loader->registerNamespaces(array(
-            // ...
-            'Elnur'            => __DIR__.'/../vendor/bundles',
-        ));
-
-3.  Register the bundle in the `app/AppKernel.php` file:
+2.  Enable the bundle in `app/AppKernel.php`:
 
         public function registerBundles()
         {
@@ -34,7 +31,7 @@ Installation
             );
         }
 
-4.  And, finally, set the encoder in the `app/config/security.yml` file:
+3.  And, finally, set the encoder in `app/config/security.yml`:
 
         security:
             encoders:
