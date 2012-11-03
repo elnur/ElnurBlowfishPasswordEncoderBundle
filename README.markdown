@@ -1,6 +1,8 @@
 ElnurBlowfishPasswordEncoderBundle
 ==================================
 
+[![Build Status](https://secure.travis-ci.org/elnur/ElnurBlowfishPasswordEncoderBundle.png)](http://travis-ci.org/elnur/ElnurBlowfishPasswordEncoderBundle)
+
 Still using `MD5` or `SHA` family hashing algorithms for password “encryption”?
 If you are, read [this](http://codahale.com/how-to-safely-store-a-password) and
 [that](http://yorickpeterse.com/articles/use-bcrypt-fool) and then come back to
