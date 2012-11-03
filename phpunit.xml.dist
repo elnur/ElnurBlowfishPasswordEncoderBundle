@@ -31,7 +31,7 @@ THE SOFTWARE.
     processIsolation            = "false"
     stopOnFailure               = "false"
     syntaxCheck                 = "false"
-    bootstrap                   = "./Tests/bootstrap.php"
+    bootstrap                   = "vendor/autoload.php"
 >
 
     <testsuites>
