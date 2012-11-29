@@ -14,7 +14,8 @@
     "require": {
         "php": ">=5.3.2",
         "symfony/framework-bundle": ">=2.0,<2.3",
-        "symfony/security-bundle": ">=2.0,<2.3"
+        "symfony/security-bundle": ">=2.0,<2.3",
+        "ircmaxell/password-compat": "1.0.*"
     },
     "autoload": {
         "psr-0": { "Elnur\\BlowfishPasswordEncoderBundle": "" }
