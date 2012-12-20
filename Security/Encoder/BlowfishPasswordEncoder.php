@@ -41,12 +41,11 @@ class BlowfishPasswordEncoder extends BasePasswordEncoder
 
     public function encodePassword($raw, $salt = null)
     {
-        $salt = substr(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36), 0, 22);
-        return crypt($raw, '$2a$' . $this->cost . '$'. $salt . '$');
+        return password_hash($raw, PASSWORD_BCRYPT, array('cost' => $this->cost));
     }
 
     public function isPasswordValid($encoded, $raw, $salt = null)
     {
-        return $this->comparePasswords($encoded, crypt($raw, $encoded));
+        return password_verify($raw, $encoded);
     }
 }
