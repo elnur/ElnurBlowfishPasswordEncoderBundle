@@ -41,7 +41,11 @@ class BlowfishPasswordEncoder extends BasePasswordEncoder
 
     public function encodePassword($raw, $salt = null)
     {
-        $salt = substr(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36), 0, 22);
+        $alphabet = './0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        $salt = '';
+        for ($i = 0; $i < 22; $i++) {
+            $salt .= $alphabet[mt_rand(0, 63)];
+        }
         return crypt($raw, '$2a$' . $this->cost . '$'. $salt . '$');
     }
 
