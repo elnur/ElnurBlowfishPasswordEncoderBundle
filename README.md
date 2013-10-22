@@ -8,6 +8,10 @@ If you are, read [this](http://codahale.com/how-to-safely-store-a-password) and
 [that](http://yorickpeterse.com/articles/use-bcrypt-fool) and then come back to
 get yourself a copy of this bundle.
 
+> The [BCrypt password encoder][1] has been added to the Symfony core in 2.2 and has been improved to the level of this
+bundle and beyond in 2.3. So, if you're using Symfony 2.3+, consider using the encoder from the core instead of this
+bundle.
+
 Installation
 ------------
 
@@ -83,3 +87,5 @@ channel.
 
 And I thank [dustin10](https://github.com/dustin10) for suggesting to add the
 extension class to make the bundle easier to install and configure.
+
+[1]: http://symfony.com/doc/current/reference/configuration/security.html#using-the-bcrypt-password-encoder
