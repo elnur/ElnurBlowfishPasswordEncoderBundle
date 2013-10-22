@@ -22,6 +22,7 @@
  */
 namespace Elnur\BlowfishPasswordEncoderBundle\Tests\Security\Encoder;
 
+use Symfony\Component\Security\Core\Encoder\BasePasswordEncoder;
 use Elnur\BlowfishPasswordEncoderBundle\Security\Encoder\BlowfishPasswordEncoder;
 
 class BlowfishPasswordEncoderTest extends \PHPUnit_Framework_TestCase
@@ -64,5 +65,24 @@ class BlowfishPasswordEncoderTest extends \PHPUnit_Framework_TestCase
         $result = $encoder->encodePassword(self::PASSWORD);
         $this->assertTrue($encoder->isPasswordValid($result, self::PASSWORD));
         $this->assertFalse($encoder->isPasswordValid($result, 'anotherPassword'));
+    }
+
+    /**
+     * @expectedException \Symfony\Component\Security\Core\Exception\BadCredentialsException
+     */
+    public function testEncodePasswordLength()
+    {
+        $encoder = new BlowfishPasswordEncoder(4);
+        $encoder->encodePassword(str_repeat('a', BasePasswordEncoder::MAX_PASSWORD_LENGTH + 1));
+    }
+
+    public function testCheckPasswordLength()
+    {
+        $cost = 4;
+        $password = str_repeat('a', BasePasswordEncoder::MAX_PASSWORD_LENGTH + 1);
+        $encoded = password_hash($password, PASSWORD_BCRYPT, array('cost' => $cost));
+
+        $encoder = new BlowfishPasswordEncoder($cost);
+        $this->assertFalse($encoder->isPasswordValid($encoded, $password));
     }
 }

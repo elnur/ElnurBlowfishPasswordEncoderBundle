@@ -23,6 +23,7 @@
 namespace Elnur\BlowfishPasswordEncoderBundle\Security\Encoder;
 
 use Symfony\Component\Security\Core\Encoder\BasePasswordEncoder;
+use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 
 class BlowfishPasswordEncoder extends BasePasswordEncoder
 {
@@ -41,11 +42,19 @@ class BlowfishPasswordEncoder extends BasePasswordEncoder
 
     public function encodePassword($raw, $salt = null)
     {
+        if ($this->isPasswordTooLong($raw)) {
+            throw new BadCredentialsException('Invalid password.');
+        }
+
         return password_hash($raw, PASSWORD_BCRYPT, array('cost' => $this->cost));
     }
 
     public function isPasswordValid($encoded, $raw, $salt = null)
     {
+        if ($this->isPasswordTooLong($raw)) {
+            return false;
+        }
+
         return password_verify($raw, $encoded);
     }
 }
