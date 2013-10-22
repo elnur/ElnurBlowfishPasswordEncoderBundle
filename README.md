@@ -15,7 +15,7 @@ Installation
 
         {
             "require": {
-                "elnur/blowfish-password-encoder-bundle": "dev-master"
+                "elnur/blowfish-password-encoder-bundle": "~0.5"
             }
         }
 
