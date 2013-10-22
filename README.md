@@ -21,7 +21,7 @@ Installation
 
     And run:
 
-        composer update elnur/blowfish-password-encoder-bundle
+        php composer.phar update elnur/blowfish-password-encoder-bundle
 
 2.  Enable the bundle in `app/AppKernel.php`:
 
