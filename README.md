@@ -9,8 +9,9 @@ If you are, read [this](http://codahale.com/how-to-safely-store-a-password) and
 get yourself a copy of this bundle.
 
 > The [BCrypt password encoder][1] has been added to the Symfony core in 2.2 and has been improved to the level of this
-bundle and beyond in 2.3. So, if you're using Symfony 2.3+, consider using the encoder from the core instead of this
-bundle.
+bundle and beyond in 2.3. So, if you're using Symfony 2.3+, consider using the encoder from the core
+instead of this bundle (if you are using PHP < 5.5 you will have to add `ircmaxell/password-compat` to your
+`composer.json`).
 
 Installation
 ------------
